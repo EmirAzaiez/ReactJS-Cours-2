@@ -39,6 +39,11 @@ class App extends React.Component {
                         <HomePage></HomePage>
                     </Route>
 
+                    <Route exact path="/login">
+
+                        <LoginPage></LoginPage>
+                    </Route>
+
                     <Route path="/contact">
 
                         <RoutePrivate >

@@ -4,6 +4,8 @@ import {
     NavLink
 } from "react-router-dom";
 
+import { connect } from 'react-redux'
+
 class Header extends React.Component {
 
     render() {
@@ -13,9 +15,14 @@ class Header extends React.Component {
 
                 <NavLink to="/" activeClassName="active">Accueil</NavLink>
 
-                <NavLink to="/list" activeClassName="active">Listing</NavLink>
+                { this.props.user_is_logged === false && <NavLink to="/login" activeClassName="active">Login</NavLink> }
 
-                <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+                { this.props.user_is_logged && <NavLink to="/list" activeClassName="active">Listing</NavLink> }
+                
+                { this.props.user_is_logged && <NavLink to="/contact" activeClassName="active">Contact</NavLink> }
+
+
+                
 
             </header>
         )
@@ -23,4 +30,10 @@ class Header extends React.Component {
 
 }
 
-export default Header;
+let mapStateToProps = (state) => {
+    return {
+        user_is_logged: state.user_is_logged
+    }
+}
+
+export default connect(mapStateToProps)(Header)

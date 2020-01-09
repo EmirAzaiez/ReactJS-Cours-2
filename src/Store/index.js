@@ -3,20 +3,13 @@ import { createStore } from 'redux'
 import Movies from '../Movies'
 
 const initState = {
-    user_is_logged: true,
+    user_is_logged: false,
     movies: Movies
 }
 
 const reducer = (state = initState, action) => {
 
-    if (action.type === 'CHANGE_CURRENTPAGE') {
-
-        return {
-           ...state,
-            currentPage: action.data.currentPage
-        }
-
-    } else if (action.type === 'ADD_MOVIE') {
+    if (action.type === 'ADD_MOVIE') {
 
         state.movies.push({
             id: action.data.id,
