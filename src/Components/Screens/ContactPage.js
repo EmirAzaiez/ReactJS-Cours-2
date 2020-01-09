@@ -2,6 +2,11 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
+
+// import Movie from './Partials/Movie'
+// import { WithoutPicture, WithPicture } from './Partials/Movie'
+import * as Movie from './Partials/Movie'
+
 class ContactPage extends React.Component {
 
     render() {
@@ -19,6 +24,11 @@ class ContactPage extends React.Component {
                 }}>
                     ADD MOVIE
                 </button>
+
+                <br/>
+
+                <Movie.WithoutPicture movie={{title: 'Test', category: 'test', image: 'http://google.fr'}}></Movie.WithoutPicture>
+
             </div>
         )
     }
