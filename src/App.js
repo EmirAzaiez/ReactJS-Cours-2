@@ -6,7 +6,6 @@ import {
     Route
 } from "react-router-dom";
 
-import { connect } from 'react-redux'
 
 import Header from './Components/Header'
 
@@ -14,6 +13,8 @@ import HomePage from './Components/HomePage'
 import LoginPage from './Components/LoginPage'
 import ListPage from './Components/ListPage'
 import ContactPage from './Components/ContactPage'
+
+import RoutePrivate from './Components/RoutePrivate'
 
 import './App.css';
 
@@ -23,31 +24,43 @@ class App extends React.Component {
 
     return (
         <Router>
+
             <div className="App">
-                
-                <Header/>
+
+                <Header></Header>
 
                 <Switch>
 
+                    {/* <RoutePrivate> */}
+                    {/* </RoutePrivate> */}
+
+                    <Route exact path="/">
+
+                        <HomePage></HomePage>
+                    </Route>
+
                     <Route path="/contact">
-                            <ContactPage />
+
+                        <RoutePrivate >
+                            <ContactPage></ContactPage>
+                        </RoutePrivate>
+
                     </Route>
 
-                    <Route path="/list">
-                            <ListPage />
-                    </Route>
+                    <Router path="/list">
 
-                    <Route exact path="/login" >
-                        <LoginPage />
-                    </Route>
+                        <RoutePrivate >
+                            <ListPage></ListPage>
+                        </RoutePrivate>
 
-                    <Route exact path="/" >
-                        <HomePage />
-                    </Route>
+                    </Router>
+
+                    
 
                 </Switch>
 
             </div>
+
         </Router>
     )
 

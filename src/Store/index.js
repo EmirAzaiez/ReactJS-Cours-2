@@ -3,7 +3,7 @@ import { createStore } from 'redux'
 import Movies from '../Movies'
 
 const initState = {
-    user_role: 1,
+    user_is_logged: true,
     movies: Movies
 }
 
@@ -28,6 +28,13 @@ const reducer = (state = initState, action) => {
         return {
             ...state,
             movies: state.movies
+        }
+
+    } else if (action.type === 'CONNECT_USER') {
+
+        return {
+            ...state,
+            user_is_logged: true
         }
 
     }
